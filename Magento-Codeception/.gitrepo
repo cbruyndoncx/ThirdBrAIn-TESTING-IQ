@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/Zifius/Magento-Codeception.git
+	branch = develop
+	commit = 1bb039ec23d512a84b6f1017fb33b0ade06f5e37
+	parent = 08da863cd8246140d1c074ace36d3f49c88fbbc1
+	method = merge
+	cmdver = 0.4.9

@@ -1,0 +1,28 @@
+# Codeception Test Suite Configuration
+
+# suite for acceptance tests.
+# perform tests in browser using the WebDriver or PhpBrowser.
+# If you need both WebDriver and PHPBrowser tests - create a separate suite.
+
+class_name: AcceptanceTester
+modules:
+    enabled:
+        - WebDriver
+        - AcceptanceHelper
+    config:
+        WebDriver:
+            url: http://mage.dev/
+            browser: phantomjs
+            clear_cookies: false
+            window_size: maximize
+data:
+    checkout:
+        firstname: 'Acceptance'
+        lastname: 'Tester'
+        email: 'codeception@test.com'
+        country_id: 'GB'
+        street: 'Baker Str. 1'
+        postcode: '10000'
+        city: 'London'
+        phone: '911'
+        timeout: 7
