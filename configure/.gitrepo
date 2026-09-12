@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/codeceptjs/configure.git
+	branch = master
+	commit = 65b59d078e0f2ea928752fb4884472cab6f49d7e
+	parent = 1b3f32f2de3046a7021c81bcf8441da0f78c0fc7
+	method = merge
+	cmdver = 0.4.9
