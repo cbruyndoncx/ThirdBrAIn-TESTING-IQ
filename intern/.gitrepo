@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/theintern/intern.git
+	branch = master
+	commit = f28dd484b1fb78cf27ae0d2072e331982e5b984e
+	parent = 215b9784add4301228fd9a93efd4a0b5b8f418d1
+	method = merge
+	cmdver = 0.4.9
