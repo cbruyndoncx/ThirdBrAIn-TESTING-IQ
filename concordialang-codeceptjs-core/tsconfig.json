@@ -1,0 +1,18 @@
+{
+    "include": [
+        "src/**/*.ts"
+    ],
+    "compilerOptions": {
+
+        "target": "ES2015",
+        "module": "commonjs",
+
+        "outDir": "dist",
+
+        "keyofStringsOnly": true,
+        "noImplicitAny": false,
+        "sourceMap": false,
+        "declaration": true,
+        "forceConsistentCasingInFileNames": true
+    }
+}

@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/thiagodp/concordialang-codeceptjs-core.git
+	branch = master
+	commit = 81d9e10c848fa11591db46030eefd4d6ab3bad89
+	parent = 89e0ef7559c41defb25dcb90bfb72b9f8da1549f
+	method = merge
+	cmdver = 0.4.9
