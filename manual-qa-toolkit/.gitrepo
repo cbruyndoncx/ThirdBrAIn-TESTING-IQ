@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/murillowelsi/manual-qa-toolkit.git
+	branch = main
+	commit = 6415114b882f9f692c1ac9faf5e5ed08931e7890
+	parent = e1d06763a22c95a15436b425fd05c0d59626e90d
+	method = merge
+	cmdver = 0.4.9
