@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/pavkam/codeceptjs-browserlogs-plugin.git
+	branch = master
+	commit = 5778eae2e8df753b7f9a22c1c0b7617f765203d8
+	parent = 90e0e586538c4038e6562251ffffcc8f827ca3f8
+	method = merge
+	cmdver = 0.4.9
