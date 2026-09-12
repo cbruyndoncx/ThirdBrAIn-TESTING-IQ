@@ -1,0 +1,113 @@
+import { Step } from "../ast/Step";
+import { NodeTypes } from "../req/NodeTypes";
+import { TestPlan } from "../testcase/TestPlan";
+
+
+export interface CorrespondingOtherwiseSteps {
+    step: Step;
+    otherwiseSteps: Step[];
+}
+
+/**
+ * Pre Test Case
+ *
+ * @author Thiago Delgado Pinto
+ */
+export class PreTestCase {
+
+    constructor(
+        public testPlan: TestPlan,
+        public steps: Step[] = [],
+        public oracles: Step[] = [], // Otherwise steps
+        public correspondingOracles: Array< CorrespondingOtherwiseSteps > = []
+    ) {
+    }
+
+    hasAnyInvalidValue(): boolean {
+        return this.testPlan.hasAnyInvalidResult();
+    }
+
+    lastThenStep(): Step | null {
+        const len = ( this.steps || [] ).length;
+        for ( let i = len - 1; i >= 0; --i ) {
+            let step = this.steps[ i ];
+            if ( NodeTypes.STEP_THEN === step.nodeType ) {
+                return step;
+            }
+        }
+        return null;
+    }
+
+    hasAnyThenStep(): boolean {
+        return this.lastThenStep() !== null;
+    }
+
+    stepsBeforeTheLastThenStep(): Step[] {
+        let lastThen = this.lastThenStep();
+        if ( null === lastThen ) {
+            return this.steps;
+        }
+        let stepsBeforeThen: Step[] = [];
+        for ( let step of this.steps ) {
+            if ( step === lastThen ) {
+                break;
+            }
+            stepsBeforeThen.push( step );
+        }
+        return stepsBeforeThen;
+    }
+
+    hasOracles(): boolean {
+        return ( this.oracles || [] ).length > 0;
+    }
+
+    shouldFail(): boolean {
+        // return this.hasAnyThenStep()
+        //     && this.hasAnyInvalidValue()
+        //     && ! this.hasOracles();
+
+        if ( ! this.hasAnyThenStep ) {
+            return false;
+        }
+
+        for ( let step of this.steps ) {
+            // Is it invalid && it does not have otherwise steps
+            if ( step.isInvalidValue && ! this.hasCorrespondingOracles( step ) ) {
+                return true;
+            }
+        }
+        return false;
+
+    }
+
+    hasCorrespondingOracles( step: Step ): boolean {
+        return !! this.correspondingOracles.find( c => c.step === step );
+    }
+
+
+    // /**
+    //  * A test should fail when all these conditions apply:
+    //  *   - The Variant has one or more Then sentences that do not produce states
+    //  *   - The DataTestCase explores a constraint (rule) of a UI Element property
+    //  *   - The referred UI Element property has no Otherwise sentences
+    //  *
+    //  * That is, the Variant's postconditions will not be replaced by
+    //  * Otherwise statements and it is expected that the system will behave
+    //  * differently from its postconditions declare, making the test fail.
+    //  * So, since it is expected that the test will fail, it should pass.
+    //  */
+    // fail: boolean = false;
+
+    // /**
+    //  * Maps a UI Element variable to the corresponding Otherwise steps that correspond
+    //  * to the applied DataTestCase. If there is no Otherwise steps, `fail` is set to true
+    //  * and original Postconditions steps from the Variant - expect for those that generate
+    //  * state - are used instead.
+    //  *
+    //  * When the Variant has no Postconditions except for those that generate state and
+    //  * the UI Element property has no Otherwise steps, `fail` is **not** set to `true`,
+    //  * because there are no expectations about how the system should behave.
+    //  */
+    // oracles: Map< string, Step[] > = new Map< string, Step[] >();
+
+}

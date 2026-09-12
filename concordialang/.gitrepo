@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/thiagodp/concordialang.git
+	branch = v2
+	commit = 409b83aea625f16ef652eb2047cca3a832abda62
+	parent = 6c980313795202f52526beb95ee6a1196356c7de
+	method = merge
+	cmdver = 0.4.9
