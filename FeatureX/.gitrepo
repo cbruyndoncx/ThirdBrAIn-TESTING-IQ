@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/5Quintessential/FeatureX.git
+	branch = master
+	commit = f8b3d1858580b6f6fa793f877b96e57ecad62b1d
+	parent = eea29adf53112453e22a105b3fc75ab0036d172c
+	method = merge
+	cmdver = 0.4.9
