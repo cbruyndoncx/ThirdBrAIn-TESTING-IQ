@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/joomla-projects/joomla-browser.git
+	branch = 4.x-dev
+	commit = e46af3afb3e38126dd1792c09d2bdadfe16f0a8b
+	parent = 0a7b6cb6729658387b5c111b40d075c8cf18aa21
+	method = merge
+	cmdver = 0.4.9

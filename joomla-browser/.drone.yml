@@ -1,0 +1,95 @@
+---
+kind: pipeline
+name: default
+
+clone:
+
+steps:
+  - name: composer
+    image: joomlaprojects/docker-images:php7.4
+    volumes:
+      - name: composer-cache
+        path: /tmp/composer-cache
+    commands:
+      - composer validate --no-check-all --strict
+      - composer install --no-progress --no-suggest
+
+  - name: phpcs
+    image: joomlaprojects/docker-images:php7.4
+    commands:
+      - echo $(date)
+      - ./vendor/bin/phpcs --extensions=php -p --standard=vendor/joomla/coding-standards/Joomla src
+      - echo $(date)
+
+  - name: prepare_test_environment
+    image: joomlaprojects/docker-images:php7.4
+    volumes:
+      - name: composer-cache
+        path: /tmp/composer-cache
+    commands:
+      - echo $(date)
+      - mkdir cache
+      - cd cache
+      - git clone https://github.com/joomla/joomla-cms.git . --depth 1
+      - composer install
+
+  - name: npm
+    image: node:16-bullseye-slim
+    commands:
+      - cd cache
+      - npm i --unsafe-perm
+
+  - name: acceptance_tests
+    image: joomlaprojects/docker-images:systemtests
+    environment:
+      JOOMLA_INSTALLATION_DISABLE_LOCALHOST_CHECK: 1
+    commands:
+      - cp -a cache/. /tests/www/test-install/
+      - chown -R www-data /tests/www/test-install/
+      - apache2ctl -D FOREGROUND &
+      - google-chrome --version
+      - selenium-standalone start > tests/_output/selenium.log 2>&1 &
+      - sleep 6
+      - ./vendor/bin/codecept build
+      - ./vendor/bin/codecept run --fail-fast --steps --debug tests/acceptance
+
+  - name: artifacts-system-tests
+    image: cschlosser/drone-ftps
+    environment:
+      FTP_USERNAME:
+        from_secret: ftpusername
+      FTP_PASSWORD:
+        from_secret: ftppassword
+      PLUGIN_HOSTNAME:
+        from_secret: ftphost
+      PLUGIN_SRC_DIR: /tests/_output/
+      PLUGIN_DEST_DIR: /
+      PLUGIN_SECURE: false
+      PLUGIN_EXCLUDE: ^\.git/$
+    commands:
+      - export PLUGIN_DEST_DIR=$PLUGIN_DEST_DIR$DRONE_REPO/$DRONE_BRANCH/$DRONE_PULL_REQUEST/$DRONE_BUILD_NUMBER
+      - echo https://artifacts.joomla.org/drone$PLUGIN_DEST_DIR
+      - /bin/upload.sh
+    when:
+      status:
+        - failure
+
+volumes:
+  - name: composer-cache
+    host:
+      path: /tmp/composer-cache
+
+services:
+  - name: mysql
+    image: mysql:5.7
+    environment:
+      MYSQL_USER: joomla_ut
+      MYSQL_PASSWORD: joomla_ut
+      MYSQL_ROOT_PASSWORD: joomla_ut
+      MYSQL_DATABASE: test_joomla
+
+---
+kind: signature
+hmac: 1ea2fc9d8a1f85e589084eff1bdfe109f5d6df965db959f4e3e099344c9a4cf4
+
+...
