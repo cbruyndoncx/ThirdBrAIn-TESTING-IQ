@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/doorstop-dev/doorstop.git
+	branch = develop
+	commit = ce76d78c5211436a1660f612450f070d2e184972
+	parent = a73ceab3c97144fd77fd4c2164ac96aa7087a919
+	method = merge
+	cmdver = 0.4.9
