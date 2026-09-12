@@ -3,7 +3,7 @@
 Consolidated collection managed with [git-subrepo](https://github.com/ingydotnet/git-subrepo).
 Update everything with `git subrepo pull --all`.
 
-Contains 12 subrepos:
+Contains 13 subrepos:
 
 ## [codeceptjs-browserlogs-plugin](https://github.com/pavkam/codeceptjs-browserlogs-plugin)
 - **Remote**: https://github.com/pavkam/codeceptjs-browserlogs-plugin.git (branch `master`)
@@ -40,10 +40,18 @@ Contains 12 subrepos:
 ## [doorstop](https://github.com/doorstop-dev/doorstop)
 - **Remote**: https://github.com/doorstop-dev/doorstop.git (branch `develop`)
 - **Description**: Requirements management using version control.
-- **Last Updated**: 2026-09-12T13:03:12Z
+- **Last Updated**: 2026-09-12T15:38:53Z
 - **Stars**: 660
 - **Languages Used**: Python, HTML, TeX, Makefile, Go Template, CSS, Shell, Smarty, Procfile
 - **Number of Releases**: 37
+
+## [FeatureX](https://github.com/5Quintessential/FeatureX)
+- **Remote**: https://github.com/5Quintessential/FeatureX.git (branch `master`)
+- **Description**: Python library for extracting feature models from natural language specifications of software products
+- **Last Updated**: 2022-01-29T12:48:52Z
+- **Stars**: 2
+- **Languages Used**: Python
+- **Number of Releases**: 0
 
 ## [gherkindoc](https://github.com/AlexandrosD/gherkindoc)
 - **Remote**: https://github.com/AlexandrosD/gherkindoc.git (branch `master`)
