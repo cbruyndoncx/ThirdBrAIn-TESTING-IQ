@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/jayhealey/Webception.git
+	branch = master
+	commit = de070806bbaacf3d1bdd690224d189da93af0b70
+	parent = 20683c391d7cc94804cddd322cbb9242a78de807
+	method = merge
+	cmdver = 0.4.9
