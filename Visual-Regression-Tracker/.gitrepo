@@ -1,0 +1,12 @@
+; DO NOT EDIT (unless you know what you are doing)
+;
+; This subdirectory is a git "subrepo", and this file is maintained by the
+; git-subrepo command. See https://github.com/ingydotnet/git-subrepo#readme
+;
+[subrepo]
+	remote = https://github.com/Visual-Regression-Tracker/Visual-Regression-Tracker.git
+	branch = master
+	commit = e133d6b0fa704779ac4eb008ed697bc630c3dd02
+	parent = a1106e0ce5e9f6e2e1986fa975c95976e85813f1
+	method = merge
+	cmdver = 0.4.9

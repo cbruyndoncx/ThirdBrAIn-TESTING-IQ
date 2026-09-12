@@ -1,0 +1,5 @@
+imageUploads
+db
+
+*.cert
+*.key
